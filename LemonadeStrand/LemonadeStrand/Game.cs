@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace LemonadeStrand
 {
-    class Game
+    public class Game
     {
+
     }
 }

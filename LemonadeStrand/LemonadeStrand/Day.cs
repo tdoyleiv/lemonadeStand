@@ -8,5 +8,7 @@ namespace LemonadeStrand
 {
     class Day
     {
+        int day;
+        public int ThisDay
     }
 }
