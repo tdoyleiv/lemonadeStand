@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 
 namespace LemonadeStrand
 {
-    class Forecast 
+    class Forecast : GreatLakesClimate
     {
         int forecastTemperature;
         Random random = new Random();
         Month month = new Month(0);
         public int RandomizeTemperature()
         {
-            int thisMonth = month.DetermineMonth();
+            int thisMonth = month.ThisMonth;
             if (thisMonth == 1)
             {
                 forecastTemperature = random.Next(15, 30);

@@ -6,13 +6,14 @@ using System.Threading.Tasks;
 
 namespace LemonadeStrand
 {
-    public class Weather
+    public class Weather : GreatLakesClimate
     {
         int temperature;
-        string precipitationType;
+        string precipitateType;
+        string sky;
+        bool isWhichPrecipitate;
         bool isPrecipitate;
         bool isSunshine;
-        int sunshineHours;
         Random random = new Random();
         Month month = new Month(0);
         public int Temperature
@@ -20,41 +21,29 @@ namespace LemonadeStrand
             get { return temperature; }
             set { temperature = value; }
         }
-        public string PrecipitationType
+        public string PrecipitateType
         {
-            get { return precipitationType; }
-            set { precipitationType = value; }
+            get { return precipitateType; }
+            set { precipitateType = value; }
         }
-        public bool IsPrecipitate
+        public string Sky
         {
-            get { return isPrecipitate; }
-            set { isPrecipitate = value; }
+            get { return sky; }
+            set { sky = value; }
         }
-        public bool IsSunshine
+        public Weather(int temperature, string precipitateType, string sky)
         {
-            get { return isSunshine; }
-            set { isSunshine = value; }
+            this.temperature = Temperature;
+            this.precipitateType = PrecipitateType;
+            this.sky = Sky;
         }
-        public int SunshineHours
-        {
-            get { return sunshineHours; }
-            set { sunshineHours = value; }
-        }
-        public Weather(int temperature, string precipitationType, bool isPrecipitate, bool isSunshine, int sunshineHours)
-        {
-            this.temperature = temperature;
-            this.precipitationType = precipitationType;
-            this.isPrecipitate = isPrecipitate;
-            this.isSunshine = isSunshine;
-            this.SunshineHours = sunshineHours;
-        }
-        public int GetTemperature()
+        int GetTemperature()
         {
             return RandomizeTemperature();
         }
-        public int RandomizeTemperature()
+        int RandomizeTemperature()
         {
-            int thisMonth = month.DetermineMonth();
+            int thisMonth = month.ThisMonth;
             if (thisMonth == 1)
             {
                 temperature = random.Next(-26, 63);
@@ -104,6 +93,189 @@ namespace LemonadeStrand
                 temperature = random.Next(-22, 68);
             }
             return temperature;
+        }
+        string GetPrecipitate()
+        {
+            if (isPrecipitate == true)
+            {
+                return GetPrecipitateType();
+            }
+            else
+            {
+                precipitateType = "dry";
+            }
+            return precipitateType;
+        }
+        string GetPrecipitateType()
+        {
+           GetPrecipitateTypeChance();
+            if (isWhichPrecipitate == true)
+            {
+                precipitateType = "Snow";
+            }
+            else
+            {
+                precipitateType = "Rain";
+            }
+            return precipitateType;
+        }
+        bool GetPrecipitationChance()
+        {
+            int thisMonth = month.ThisMonth;
+            if (thisMonth == 1)
+            {
+                if (random.Next(31) <= 11)
+                {
+                    isPrecipitate = true;
+                }
+            }
+            else if (thisMonth == 2)
+            {
+                if (random.Next(28) <= 10)
+                {
+                    isPrecipitate = true;
+                }
+            }
+            else if (thisMonth == 3)
+            {
+                if (random.Next(31) <= 11)
+                {
+                    isPrecipitate = true;
+                }
+            }
+            else if (thisMonth == 4)
+            {
+                if (random.Next(30) <= 12)
+                {
+                    isPrecipitate = true;
+                }
+            }
+            else if (thisMonth == 5)
+            {
+                if (random.Next(31) <= 11)
+                {
+                    isPrecipitate = true;
+                }
+            }
+            else if (thisMonth == 6)
+            {
+                if (random.Next(30) <= 10)
+                {
+                    isPrecipitate = true;
+                }
+            }
+            else if (thisMonth == 7)
+            {
+                if (random.Next(31) <= 10)
+                {
+                    isPrecipitate = true;
+                }
+            }
+            else if (thisMonth == 8)
+            {
+                if (random.Next(31) <= 10)
+                {
+                    isPrecipitate = true;
+                }
+            }
+            else if (thisMonth == 9)
+            {
+                if (random.Next(30) <= 9)
+                {
+                    isPrecipitate = true;
+                }
+            }
+            else if (thisMonth == 10)
+            {
+                if (random.Next(31) <= 10)
+                {
+                    isPrecipitate = true;
+                }
+            }
+            else if (thisMonth == 11)
+            {
+                if (random.Next(30) <= 11)
+                {
+                    isPrecipitate = true;
+                }
+            }
+            else if (thisMonth == 12)
+            {
+                if (random.Next(31) <= 11)
+                {
+                    isPrecipitate = true;
+                }
+            }
+            return isPrecipitate;
+        }
+        bool GetPrecipitateTypeChance()
+        {
+            int thisMonth = month.ThisMonth;
+            if (thisMonth == 1)
+            {
+                if (random.Next(10) <= 9)
+                {
+                    isWhichPrecipitate = true;
+                }
+            }
+            else if (thisMonth == 2)
+            {
+               if (random.Next(10) <= 8)
+                {
+                    isWhichPrecipitate = true;
+                }
+                else
+                {
+                    isWhichPrecipitate = false;
+                }
+            }
+            else if (thisMonth == 3)
+            {
+                if (random.Next(100) <= 54)
+                {
+                    isWhichPrecipitate = true;
+                }
+                else
+                {
+                    isWhichPrecipitate = false;
+                }
+            }
+            else if (thisMonth == 4)
+            {
+                if (random.Next(100) <= 17)
+                {
+                    isWhichPrecipitate = true;
+                }
+            }
+            else if (thisMonth == 5)
+            {
+                if (random.Next(1000) <= 9)
+                {
+                    isWhichPrecipitate = true;
+                }
+            }
+            else if (thisMonth == 10)
+            {
+                if (random.Next(100) <= 3)
+                {
+                    isWhichPrecipitate = true;
+                }
+            }
+            else if (thisMonth == 11)
+            {
+                if (random.Next(100) <= 27)
+                {
+                    isWhichPrecipitate = true;
+                }
+            }
+            else if (thisMonth == 12)
+            {
+                if (random.Next(25) <= 18)
+                {
+                    isWhichPrecipitate = true;
+                }
+            }
+            return isWhichPrecipitate;
         }
     }
 }

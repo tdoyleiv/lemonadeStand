@@ -11,14 +11,14 @@ namespace LemonadeStrand
         int month;
         public int ThisMonth
         {
-            get { return month; }
+            get { return GetMonth(); }
             set { month = value; }
         }
         public Month(int month)
         {
-            this.month = month;
+            this.month = ThisMonth;
         }
-        public int DetermineMonth()
+        int GetMonth()
         {
             DateTime today = DateTime.Today;
             return month = today.Month;
