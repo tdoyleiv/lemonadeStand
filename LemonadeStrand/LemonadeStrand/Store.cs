@@ -8,5 +8,6 @@ namespace LemonadeStrand
 {
     class Store
     {
+        Inventory inventory = new Inventory();
     }
 }
