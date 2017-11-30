@@ -19,17 +19,17 @@ namespace LemonadeStrand
         Month month = new Month(0);
         public int Temperature
         {
-            get { return temperature; }
+            get { return GetTemperature(); }
             set { temperature = value; }
         }
         public string PrecipitateType
         {
-            get { return precipitateType; }
+            get { return GetPrecipitate(); }
             set { precipitateType = value; }
         }
         public string Sky
         {
-            get { return sky; }
+            get { return GetSky(); }
             set { sky = value; }
         }
         public Weather(int temperature, string precipitateType, string sky)
@@ -37,12 +37,6 @@ namespace LemonadeStrand
             this.temperature = Temperature;
             this.precipitateType = PrecipitateType;
             this.sky = Sky;
-        }
-        void GetWeather()
-        {
-            GetTemperature();
-            GetPrecipitate();
-            GetSky();
         }
         int GetTemperature()
         {
@@ -55,7 +49,7 @@ namespace LemonadeStrand
         }
         string GetPrecipitate()
         {
-            DeterminePrecipitate();
+            GetPrecipitationChance();
             if (isPrecipitate == true)
             {
                 return DeterminePrecipitate();

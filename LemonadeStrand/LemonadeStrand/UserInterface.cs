@@ -8,5 +8,6 @@ namespace LemonadeStrand
 {
     class UserInterface
     {
+
     }
 }
