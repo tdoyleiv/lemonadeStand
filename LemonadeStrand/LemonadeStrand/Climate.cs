@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LemonadeStrand
 {
-    public class MKEClimate
+    public class Climate
     {
         Month month = new Month(0);
         int tempHigh;
@@ -51,7 +51,7 @@ namespace LemonadeStrand
             get { return GetSunChance(); }
             set { sunChance = value; }
         }
-        public MKEClimate(int tempHigh, int tempLow, int tempHighAvg, int tempLowAvg, int precipDays, int snowDays, int sunChance)
+        public Climate(int tempHigh, int tempLow, int tempHighAvg, int tempLowAvg, int precipDays, int snowDays, int sunChance)
         {
             this.tempHigh = TempHigh;
             this.tempLow = TempLow;
@@ -220,6 +220,5 @@ namespace LemonadeStrand
                 sunChance = 37;
             }
         }
-    }
     }
 }

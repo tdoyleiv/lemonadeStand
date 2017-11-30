@@ -8,7 +8,7 @@ namespace LemonadeStrand
 {
     public class Weather
     {
-        MKEClimate climate = new MKEClimate(0, 0, 0, 0, 0, 0, 0);
+        Climate climate = new Climate(0, 0, 0, 0, 0, 0, 0);
         int temperature;
         string precipitateType;
         string sky;
