@@ -38,68 +38,27 @@ namespace LemonadeStrand
             this.precipitateType = PrecipitateType;
             this.sky = Sky;
         }
+        void GetWeather()
+        {
+            GetTemperature();
+            GetPrecipitate();
+            GetSky();
+        }
         int GetTemperature()
         {
             return RandomizeTemperature();
         }
         int RandomizeTemperature()
         {
-            int thisMonth = month.ThisMonth;
-            if (thisMonth == 1)
-            {
-                temperature = random.Next(climate.TempLow, climate.TempHigh);
-            }
-            else if (thisMonth == 2)
-            {
-                temperature = random.Next(climate.TempLow, climate.TempHigh);
-            }
-            else if (thisMonth == 3)
-            {
-                temperature = random.Next(climate.TempLow, climate.TempHigh);
-            }
-            else if (thisMonth == 4)
-            {
-                temperature = random.Next(climate.TempLow, climate.TempHigh);
-            }
-            else if (thisMonth == 5)
-            {
-                temperature = random.Next(climate.TempLow, climate.TempHigh);
-            }
-            else if (thisMonth == 6)
-            {
-                temperature = random.Next(climate.TempLow, climate.TempHigh);
-            }
-            else if (thisMonth == 7)
-            {
-                temperature = random.Next(climate.TempLow, climate.TempHigh);
-            }
-            else if (thisMonth == 8)
-            {
-                temperature = random.Next(climate.TempLow, climate.TempHigh);
-            }
-            else if (thisMonth == 9)
-            {
-                temperature = random.Next(climate.TempLow, climate.TempHigh);
-            }
-            else if (thisMonth == 10)
-            {
-                temperature = random.Next(climate.TempLow, climate.TempHigh);
-            }
-            else if (thisMonth == 11)
-            {
-                temperature = random.Next(climate.TempLow, climate.TempHigh);
-            }
-            else if (thisMonth == 12)
-            {
-                temperature = random.Next(climate.TempLow, climate.TempHigh);
-            }
+            temperature = random.Next(climate.TempLow, climate.TempHigh);
             return temperature;
         }
         string GetPrecipitate()
         {
+            DeterminePrecipitate();
             if (isPrecipitate == true)
             {
-                return GetPrecipitateType();
+                return DeterminePrecipitate();
             }
             else
             {
@@ -107,9 +66,10 @@ namespace LemonadeStrand
             }
             return precipitateType;
         }
-        string GetPrecipitateType()
+        string DeterminePrecipitate()
         {
-           GetPrecipitateTypeChance();
+            GetPrecipitationChance();
+            GetPrecipitateTypeChance();
             if (isWhichPrecipitate == true)
             {
                 precipitateType = "Snowing";
@@ -211,100 +171,32 @@ namespace LemonadeStrand
         }
         bool GetPrecipitateTypeChance()
         {
-            int thisMonth = month.ThisMonth;
-            if (thisMonth == 1)
-            {
                 if (random.Next(climate.PrecipDays) <= climate.SnowDays)
                 {
                     isWhichPrecipitate = true;
                 }
-            }
-            else if (thisMonth == 2)
+                return isWhichPrecipitate;
+        }
+        bool GetSunshineChance()
+        {
+            if (random.Next(100) < climate.SunChance)
             {
-               if (random.Next(climate.PrecipDays) <= climate.SnowDays)
-                {
-                    isWhichPrecipitate = true;
-                }
-                else
-                {
-                    isWhichPrecipitate = false;
-                }
+                isSunshine = true;
             }
-            else if (thisMonth == 3)
+            return isSunshine;
+        }
+        string GetSky()
+        {
+            GetSunshineChance();
+            if (isSunshine == true)
             {
-                if (random.Next(climate.PrecipDays) <= climate.SnowDays)
-                {
-                    isWhichPrecipitate = true;
-                }
-                else
-                {
-                    isWhichPrecipitate = false;
-                }
+                sky = "Sunny";
             }
-            else if (thisMonth == 4)
+            else
             {
-                if (random.Next(climate.PrecipDays) <= climate.SnowDays)
-                {
-                    isWhichPrecipitate = true;
-                }
+                sky = "Overcast";
             }
-            else if (thisMonth == 5)
-            {
-                if (random.Next(climate.PrecipDays) <= climate.SnowDays)
-                {
-                    isWhichPrecipitate = true;
-                }
-            }
-            else if (thisMonth == 6)
-            {
-                if (random.Next(climate.PrecipDays) <= climate.PrecipDays)
-                {
-                    isWhichPrecipitate = true;
-                }
-            }
-            else if (thisMonth == 7)
-            {
-                if (random.Next(climate.PrecipDays) <= climate.PrecipDays)
-                {
-                    isWhichPrecipitate = true;
-                }
-            }
-            else if (thisMonth == 8)
-            {
-                if (random.Next(climate.PrecipDays) <= climate.PrecipDays)
-                {
-                    isWhichPrecipitate = true;
-                }
-            }
-            else if (thisMonth == 9)
-            {
-                if (random.Next(climate.PrecipDays) <= climate.PrecipDays)
-                {
-                    isWhichPrecipitate = true;
-                }
-            }
-            else if (thisMonth == 10)
-            {
-                if (random.Next(climate.PrecipDays) <= climate.SnowDays)
-                {
-                    isWhichPrecipitate = true;
-                }
-            }
-            else if (thisMonth == 11)
-            {
-                if (random.Next(climate.PrecipDays) <= climate.SnowDays)
-                {
-                    isWhichPrecipitate = true;
-                }
-            }
-            else if (thisMonth == 12)
-            {
-                if (random.Next(climate.PrecipDays) <= climate.SnowDays)
-                {
-                    isWhichPrecipitate = true;
-                }
-            }
-            return isWhichPrecipitate;
+            return sky;
         }
     }
 }
