@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace LemonadeStrand
 {
-    class Forecast : GreatLakesClimate
+    class Forecast
     {
+        MKEClimate climate = new MKEClimate(0, 0, 0, 0, 0, 0, 0);
         int forecastTemperature;
         Random random = new Random();
         Month month = new Month(0);

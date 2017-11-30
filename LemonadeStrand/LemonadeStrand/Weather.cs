@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace LemonadeStrand
 {
-    public class Weather : GreatLakesClimate
+    public class Weather
     {
+        MKEClimate climate = new MKEClimate(0, 0, 0, 0, 0, 0, 0);
         int temperature;
         string precipitateType;
         string sky;
@@ -46,51 +47,51 @@ namespace LemonadeStrand
             int thisMonth = month.ThisMonth;
             if (thisMonth == 1)
             {
-                temperature = random.Next(-26, 63);
+                temperature = random.Next(climate.TempLow, climate.TempHigh);
             }
             else if (thisMonth == 2)
             {
-                temperature = random.Next(-26, 71);
+                temperature = random.Next(climate.TempLow, climate.TempHigh);
             }
             else if (thisMonth == 3)
             {
-                temperature = random.Next(-10, 84);
+                temperature = random.Next(climate.TempLow, climate.TempHigh);
             }
             else if (thisMonth == 4)
             {
-                temperature = random.Next(12, 91);
+                temperature = random.Next(climate.TempLow, climate.TempHigh);
             }
             else if (thisMonth == 5)
             {
-                temperature = random.Next(21, 94);
+                temperature = random.Next(climate.TempLow, climate.TempHigh);
             }
             else if (thisMonth == 6)
             {
-                temperature = random.Next(33, 104);
+                temperature = random.Next(climate.TempLow, climate.TempHigh);
             }
             else if (thisMonth == 7)
             {
-                temperature = random.Next(40, 105);
+                temperature = random.Next(climate.TempLow, climate.TempHigh);
             }
             else if (thisMonth == 8)
             {
-                temperature = random.Next(42, 103);
+                temperature = random.Next(climate.TempLow, climate.TempHigh);
             }
             else if (thisMonth == 9)
             {
-                temperature = random.Next(28, 99);
+                temperature = random.Next(climate.TempLow, climate.TempHigh);
             }
             else if (thisMonth == 10)
             {
-                temperature = random.Next(15, 89);
+                temperature = random.Next(climate.TempLow, climate.TempHigh);
             }
             else if (thisMonth == 11)
             {
-                temperature = random.Next(-14, 77);
+                temperature = random.Next(climate.TempLow, climate.TempHigh);
             }
             else if (thisMonth == 12)
             {
-                temperature = random.Next(-22, 68);
+                temperature = random.Next(climate.TempLow, climate.TempHigh);
             }
             return temperature;
         }
@@ -102,7 +103,7 @@ namespace LemonadeStrand
             }
             else
             {
-                precipitateType = "dry";
+                precipitateType = "Dry";
             }
             return precipitateType;
         }
@@ -111,11 +112,11 @@ namespace LemonadeStrand
            GetPrecipitateTypeChance();
             if (isWhichPrecipitate == true)
             {
-                precipitateType = "Snow";
+                precipitateType = "Snowing";
             }
             else
             {
-                precipitateType = "Rain";
+                precipitateType = "Raining";
             }
             return precipitateType;
         }
@@ -124,84 +125,84 @@ namespace LemonadeStrand
             int thisMonth = month.ThisMonth;
             if (thisMonth == 1)
             {
-                if (random.Next(31) <= 11)
+                if (random.Next(31) <= climate.PrecipDays)
                 {
                     isPrecipitate = true;
                 }
             }
             else if (thisMonth == 2)
             {
-                if (random.Next(28) <= 10)
+                if (random.Next(28) <= climate.PrecipDays)
                 {
                     isPrecipitate = true;
                 }
             }
             else if (thisMonth == 3)
             {
-                if (random.Next(31) <= 11)
+                if (random.Next(31) <= climate.PrecipDays)
                 {
                     isPrecipitate = true;
                 }
             }
             else if (thisMonth == 4)
             {
-                if (random.Next(30) <= 12)
+                if (random.Next(30) <= climate.PrecipDays)
                 {
                     isPrecipitate = true;
                 }
             }
             else if (thisMonth == 5)
             {
-                if (random.Next(31) <= 11)
+                if (random.Next(31) <= climate.PrecipDays)
                 {
                     isPrecipitate = true;
                 }
             }
             else if (thisMonth == 6)
             {
-                if (random.Next(30) <= 10)
+                if (random.Next(30) <= climate.PrecipDays)
                 {
                     isPrecipitate = true;
                 }
             }
             else if (thisMonth == 7)
             {
-                if (random.Next(31) <= 10)
+                if (random.Next(31) <= climate.PrecipDays)
                 {
                     isPrecipitate = true;
                 }
             }
             else if (thisMonth == 8)
             {
-                if (random.Next(31) <= 10)
+                if (random.Next(31) <= climate.PrecipDays)
                 {
                     isPrecipitate = true;
                 }
             }
             else if (thisMonth == 9)
             {
-                if (random.Next(30) <= 9)
+                if (random.Next(30) <= climate.PrecipDays)
                 {
                     isPrecipitate = true;
                 }
             }
             else if (thisMonth == 10)
             {
-                if (random.Next(31) <= 10)
+                if (random.Next(31) <= climate.PrecipDays)
                 {
                     isPrecipitate = true;
                 }
             }
             else if (thisMonth == 11)
             {
-                if (random.Next(30) <= 11)
+                if (random.Next(30) <= climate.PrecipDays)
                 {
                     isPrecipitate = true;
                 }
             }
             else if (thisMonth == 12)
             {
-                if (random.Next(31) <= 11)
+                if (random.Next(31) <= climate.PrecipDays)
                 {
                     isPrecipitate = true;
                 }
@@ -213,14 +214,14 @@ namespace LemonadeStrand
             int thisMonth = month.ThisMonth;
             if (thisMonth == 1)
             {
-                if (random.Next(10) <= 9)
+                if (random.Next(climate.PrecipDays) <= climate.SnowDays)
                 {
                     isWhichPrecipitate = true;
                 }
             }
             else if (thisMonth == 2)
             {
-               if (random.Next(10) <= 8)
+               if (random.Next(climate.PrecipDays) <= climate.SnowDays)
                 {
                     isWhichPrecipitate = true;
                 }
@@ -231,7 +232,7 @@ namespace LemonadeStrand
             }
             else if (thisMonth == 3)
             {
-                if (random.Next(100) <= 54)
+                if (random.Next(climate.PrecipDays) <= climate.SnowDays)
                 {
                     isWhichPrecipitate = true;
                 }
@@ -242,35 +243,63 @@ namespace LemonadeStrand
             }
             else if (thisMonth == 4)
             {
-                if (random.Next(100) <= 17)
+                if (random.Next(climate.PrecipDays) <= climate.SnowDays)
                 {
                     isWhichPrecipitate = true;
                 }
             }
             else if (thisMonth == 5)
             {
-                if (random.Next(1000) <= 9)
+                if (random.Next(climate.PrecipDays) <= climate.SnowDays)
+                {
+                    isWhichPrecipitate = true;
+                }
+            }
+            else if (thisMonth == 6)
+            {
+                if (random.Next(climate.PrecipDays) <= climate.PrecipDays)
+                {
+                    isWhichPrecipitate = true;
+                }
+            }
+            else if (thisMonth == 7)
+            {
+                if (random.Next(climate.PrecipDays) <= climate.PrecipDays)
+                {
+                    isWhichPrecipitate = true;
+                }
+            }
+            else if (thisMonth == 8)
+            {
+                if (random.Next(climate.PrecipDays) <= climate.PrecipDays)
+                {
+                    isWhichPrecipitate = true;
+                }
+            }
+            else if (thisMonth == 9)
+            {
+                if (random.Next(climate.PrecipDays) <= climate.PrecipDays)
                 {
                     isWhichPrecipitate = true;
                 }
             }
             else if (thisMonth == 10)
             {
-                if (random.Next(100) <= 3)
+                if (random.Next(climate.PrecipDays) <= climate.SnowDays)
                 {
                     isWhichPrecipitate = true;
                 }
             }
             else if (thisMonth == 11)
             {
-                if (random.Next(100) <= 27)
+                if (random.Next(climate.PrecipDays) <= climate.SnowDays)
                 {
                     isWhichPrecipitate = true;
                 }
             }
             else if (thisMonth == 12)
             {
-                if (random.Next(25) <= 18)
+                if (random.Next(climate.PrecipDays) <= climate.SnowDays)
                 {
                     isWhichPrecipitate = true;
                 }
