@@ -178,7 +178,8 @@ namespace LemonadeStrand
         string GetSky()
         {
             GetSunshineChance();
-            if (isSunshine == true)
+            GetPrecipitationChance();
+            if (isSunshine == true && isPrecipitate == false)
             {
                 sky = "Sunny";
             }
