@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LemonadeStrand
 {
-    class Ice : Supply
+    public class Ice
     {
 
     }

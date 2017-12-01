@@ -8,6 +8,15 @@ namespace LemonadeStrand
 {
     public class Game
     {
-
+        Random random = new Random();
+        public Random RNG
+        {
+            get { return random; }
+            set { random = value; }
+        }
+        public Game(Random random)
+        {
+            this.random = random;
+        }
     }
 }

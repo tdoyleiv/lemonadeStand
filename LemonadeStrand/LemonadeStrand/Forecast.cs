@@ -15,11 +15,11 @@ namespace LemonadeStrand
         bool isPrecipitate;
         bool isWhichPrecipitate;
         bool isSunshine;
-        Random random = new Random();
+        Game game = new Game(null);
         Month month = new Month(0);
         int ForecastTemperature()
         {
-            temperature = random.Next(climate.TempLowAvg, climate.TempHighAvg);
+            temperature = game.RNG.Next(climate.TempLowAvg, climate.TempHighAvg);
             return temperature;
         }
         public int Temperature
@@ -75,84 +75,84 @@ namespace LemonadeStrand
             int thisMonth = month.ThisMonth;
             if (thisMonth == 1)
             {
-                if (random.Next(31) <= climate.PrecipDays)
+                if (game.RNG.Next(31) <= climate.PrecipDays)
                 {
                     isPrecipitate = true;
                 }
             }
             else if (thisMonth == 2)
             {
-                if (random.Next(28) <= climate.PrecipDays)
+                if (game.RNG.Next(28) <= climate.PrecipDays)
                 {
                     isPrecipitate = true;
                 }
             }
             else if (thisMonth == 3)
             {
-                if (random.Next(31) <= climate.PrecipDays)
+                if (game.RNG.Next(31) <= climate.PrecipDays)
                 {
                     isPrecipitate = true;
                 }
             }
             else if (thisMonth == 4)
             {
-                if (random.Next(30) <= climate.PrecipDays)
+                if (game.RNG.Next(30) <= climate.PrecipDays)
                 {
                     isPrecipitate = true;
                 }
             }
             else if (thisMonth == 5)
             {
-                if (random.Next(31) <= climate.PrecipDays)
+                if (game.RNG.Next(31) <= climate.PrecipDays)
                 {
                     isPrecipitate = true;
                 }
             }
             else if (thisMonth == 6)
             {
-                if (random.Next(30) <= climate.PrecipDays)
+                if (game.RNG.Next(30) <= climate.PrecipDays)
                 {
                     isPrecipitate = true;
                 }
             }
             else if (thisMonth == 7)
             {
-                if (random.Next(31) <= climate.PrecipDays)
+                if (game.RNG.Next(31) <= climate.PrecipDays)
                 {
                     isPrecipitate = true;
                 }
             }
             else if (thisMonth == 8)
             {
-                if (random.Next(31) <= climate.PrecipDays)
+                if (game.RNG.Next(31) <= climate.PrecipDays)
                 {
                     isPrecipitate = true;
                 }
             }
             else if (thisMonth == 9)
             {
-                if (random.Next(30) <= climate.PrecipDays)
+                if (game.RNG.Next(30) <= climate.PrecipDays)
                 {
                     isPrecipitate = true;
                 }
             }
             else if (thisMonth == 10)
             {
-                if (random.Next(31) <= climate.PrecipDays)
+                if (game.RNG.Next(31) <= climate.PrecipDays)
                 {
                     isPrecipitate = true;
                 }
             }
             else if (thisMonth == 11)
             {
-                if (random.Next(30) <= climate.PrecipDays)
+                if (game.RNG.Next(30) <= climate.PrecipDays)
                 {
                     isPrecipitate = true;
                 }
             }
             else if (thisMonth == 12)
             {
-                if (random.Next(31) <= climate.PrecipDays)
+                if (game.RNG.Next(31) <= climate.PrecipDays)
                 {
                     isPrecipitate = true;
                 }
@@ -161,7 +161,7 @@ namespace LemonadeStrand
         }
         bool GetPrecipitateTypeChance()
         {
-            if (random.Next(climate.PrecipDays) <= climate.SnowDays)
+            if (game.RNG.Next(climate.PrecipDays) <= climate.SnowDays)
             {
                 isWhichPrecipitate = true;
             }
@@ -169,7 +169,7 @@ namespace LemonadeStrand
         }
         bool GetSunshineChance()
         {
-            if (random.Next(100) < climate.SunChance)
+            if (game.RNG.Next(100) < climate.SunChance)
             {
                 isSunshine = true;
             }

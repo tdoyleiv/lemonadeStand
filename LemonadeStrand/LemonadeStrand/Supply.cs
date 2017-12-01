@@ -6,19 +6,44 @@ using System.Threading.Tasks;
 
 namespace LemonadeStrand
 {
-    public abstract class Supply
+    public class Supply
     {
-        int amount;
-        Region region = new Region(null, 0.00);
-        int Amount
+        double localShare;
+        double stateShare;
+        double usShare;
+        Economy economy = new Economy(0, 0, 0, 0);
+        public double LocalShare
         {
-            get { return GetAmount(); }
-            set { amount = value; }
+            get { return GetLocalShare(); }
+            set { localShare = value; }
         }
-        int GetAmount()
+        public double StateShare
         {
-            double share = region.RegionGDPPerCapita;
-            return amount;
+            get { return GetStateShare(); }
+            set { stateShare = value; }
+        }
+        public double USShare
+        {
+            get { return GetUSShare(); }
+            set { usShare = value; }
+        }
+        public Supply(double localShare, double stateShare, double usShare)
+        {
+            this.localShare = LocalShare;
+            this.stateShare = StateShare;
+            this.usShare = USShare;
+        }
+        double GetUSShare()
+        {
+            return usShare = economy.USGDP / economy.GlobalGDP;
+        }
+        double GetStateShare()
+        {
+            return stateShare = economy.StateGDP / economy.USGDP;
+        }
+        double GetLocalShare()
+        {
+            return localShare = economy.LocalGDP / economy.StateGDP;
         }
     }
 }

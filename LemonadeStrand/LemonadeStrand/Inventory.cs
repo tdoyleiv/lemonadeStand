@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace LemonadeStrand
 {
-    class Inventory
+    public class Inventory
     {
-        Lemon lemon = new Lemon();
-        Sugar sugar = new Sugar();
-        Cup cup = new Cup();
+        Lemon lemon = new Lemon(0, 0);
+        Sugar sugar = new Sugar(0, 0);
+        Cup cup = new Cup(0, 0);
         Ice ice = new Ice();
     }
 }
